@@ -1,273 +1,515 @@
-Here's a copy-paste ready README.md for your GitHub repository:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwordless Auth Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
 
-markdown# 🔐 Passwordless Authentication App
+        .container {
+            text-align: center;
+        }
 
-A modern Android application demonstrating **passwordless authentication** using Email + OTP (One-Time Password) flow, built with **Jetpack Compose** and following **clean architecture** principles.
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
 
-## ✨ Features
+        .logo-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
 
-- ✅ **Email-based Authentication** - No password required
-- ✅ **6-digit OTP Generation** - Locally generated and validated
-- ✅ **Real-time OTP Expiry** - 60-second countdown timer
-- ✅ **Attempt Limiting** - Maximum 3 verification attempts
-- ✅ **Session Management** - Live session duration tracking
-- ✅ **Resend OTP** - Invalidates old OTP and resets attempts
-- ✅ **Analytics Logging** - Integrated with Timber for event tracking
-- ✅ **Material Design 3** - Modern, clean UI with Jetpack Compose
-- ✅ **State Persistence** - Survives configuration changes (screen rotation)
+        .logo-card h3 {
+            margin-top: 20px;
+            color: #333;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-## 🏗️ Architecture
+        /* Main Logo */
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-This project follows **MVVM (Model-View-ViewModel)** architecture with clear separation of concerns:
-```
-app/
-├── data/
-│   ├── OtpData.kt           # Data model for OTP
-│   └── OtpManager.kt        # Business logic for OTP management
-├── ui/
-│   ├── login/
-│   │   └── LoginScreen.kt   # Email input screen
-│   ├── otp/
-│   │   └── OtpScreen.kt     # OTP verification screen
-│   ├── session/
-│   │   └── SessionScreen.kt # Active session screen
-│   └── theme/               # Material Design 3 theming
-├── viewmodel/
-│   └── AuthViewModel.kt     # State management
-├── navigation/
-│   └── AppNavGraph.kt       # Navigation graph
-└── MainActivity.kt          # App entry point
-```
+        /* Logo 1: Shield with Key */
+        .shield-logo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-## 🛠️ Tech Stack
+        .shield-logo::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.15);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-### Language & Framework
-- **Kotlin** - 100% Kotlin codebase
-- **Jetpack Compose** - Modern declarative UI toolkit
-- **Material Design 3** - Latest Material Design components
+        .shield-logo .key-icon {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            z-index: 1;
+        }
 
-### Architecture Components
-- **ViewModel** - Lifecycle-aware state management
-- **Navigation Compose** - Type-safe navigation
-- **Coroutines** - Asynchronous programming
-- **State Hoisting** - Unidirectional data flow
+        .key-icon .circle {
+            width: 28px;
+            height: 28px;
+            border: 6px solid white;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
 
-### External SDK
-- **Timber** - Logging framework for analytics and debugging
+        .key-icon .line {
+            width: 6px;
+            height: 30px;
+            background: white;
+            position: absolute;
+            top: 32px;
+            left: 21px;
+            border-radius: 3px;
+        }
 
-### Key Compose Concepts Used
-- `@Composable` functions
-- `remember` and `rememberSaveable` for state
-- `LaunchedEffect` for side effects
-- State hoisting pattern
-- Recomposition handling
+        .key-icon .teeth {
+            position: absolute;
+            bottom: 8px;
+            left: 18px;
+        }
 
-## 📋 Requirements
+        .key-icon .tooth {
+            width: 6px;
+            height: 8px;
+            background: white;
+            display: inline-block;
+            margin-right: 3px;
+        }
 
-- **Android Studio** Hedgehog (2023.1.1) or later
-- **Minimum SDK** 24 (Android 7.0)
-- **Target SDK** 34 (Android 14)
-- **Kotlin** 1.9.23
-- **Gradle** 8.7+
+        /* Logo 2: Fingerprint Style */
+        .fingerprint-logo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-## 🚀 Getting Started
+        .fingerprint-lines {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/passwordless-auth.git
-cd passwordless-auth
-```
+        .fp-line {
+            position: absolute;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
 
-### 2. Open in Android Studio
-- Open Android Studio
-- Select "Open an Existing Project"
-- Navigate to the cloned directory
-- Wait for Gradle sync to complete
+        .fp-line:nth-child(1) { width: 30px; height: 40px; top: 30px; left: 35px; }
+        .fp-line:nth-child(2) { width: 50px; height: 60px; top: 20px; left: 25px; }
+        .fp-line:nth-child(3) { width: 70px; height: 80px; top: 10px; left: 15px; }
+        .fp-line:nth-child(4) { width: 90px; height: 100px; top: 0; left: 5px; opacity: 0.6; }
 
-### 3. Build and Run
-- Connect an Android device or start an emulator
-- Click the "Run" button or press `Shift + F10`
-- The app will install and launch automatically
+        /* Logo 3: Lock with OTP */
+        .lock-logo {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-## 🔑 How It Works
+        .lock-body {
+            width: 60px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+            margin-top: 15px;
+        }
 
-### OTP Logic & Expiry Handling
+        .lock-shackle {
+            width: 40px;
+            height: 30px;
+            border: 6px solid white;
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            position: absolute;
+            top: -25px;
+            left: 10px;
+        }
 
-#### 1. **OTP Generation**
-- **6-digit random number** generated using Kotlin's `random()`
-- **Per-email storage** using `MutableMap<String, OtpData>`
-- **Expiry timestamp** set to current time + 60 seconds
-- **Initial attempts** set to 3
+        .otp-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-#### 2. **OTP Validation**
-- Checks if OTP exists for the email
-- Validates expiry time (current time vs. stored expiry)
-- Checks remaining attempts (max 3)
-- Decrements attempts on incorrect OTP
-- Returns success/failure
+        .otp-dot {
+            width: 6px;
+            height: 6px;
+            background: #4facfe;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
 
-#### 3. **Live Timer Implementation**
-```kotlin
-LaunchedEffect(Unit) {
-    while (true) {
-        delay(1000)
-        remainingTime = viewModel.remainingTime() / 1000
-        if (remainingTime <= 0) break
-    }
-}
-```
-- Uses `LaunchedEffect` for coroutine-based timer
-- Updates every second
-- Automatically stops when expired
+        .otp-dot:nth-child(2) { animation-delay: 0.2s; }
+        .otp-dot:nth-child(3) { animation-delay: 0.4s; }
+        .otp-dot:nth-child(4) { animation-delay: 0.6s; }
 
-#### 4. **Resend OTP Flow**
-- Calling `generateOtp()` again **invalidates** the previous OTP
-- **Resets** `attemptsLeft` to 3
-- **Resets** expiry timer to 60 seconds
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
 
-### Data Structures Used
+        /* Logo 4: Minimal Email */
+        .email-logo {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-#### `OtpData` (Data Class)
-```kotlin
-data class OtpData(
-    val otp: String,           // The 6-digit OTP
-    val expiryTime: Long,      // Timestamp when OTP expires
-    var attemptsLeft: Int = 3  // Mutable - decrements on failed attempts
-)
-```
+        .envelope {
+            width: 80px;
+            height: 60px;
+            position: relative;
+        }
 
-**Why this structure?**
-- ✅ **Immutable OTP** - Can't be accidentally changed
-- ✅ **Timestamp-based expiry** - More reliable than countdown
-- ✅ **Mutable attempts** - Allows decrementing without recreating object
+        .envelope-body {
+            width: 80px;
+            height: 50px;
+            background: white;
+            border-radius: 5px;
+            position: relative;
+        }
 
-#### `MutableMap<String, OtpData>`
-```kotlin
-private val otpStore = mutableMapOf()
-```
+        .envelope-flap {
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-top: 30px solid rgba(255, 255, 255, 0.9);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-**Why Map instead of single variable?**
-- ✅ **Multi-user support** - Each email has its own OTP
-- ✅ **O(1) lookup** - Fast retrieval by email key
-- ✅ **Isolation** - One user's failed attempts don't affect others
+        .security-badge {
+            width: 30px;
+            height: 30px;
+            background: #fee140;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
 
-## 📊 Analytics Events Logged
+        .download-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
 
-Using **Timber**, the following events are logged:
+        .download-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
 
-| Event | Trigger | Log Level |
-|-------|---------|-----------|
-| **OTP Generated** | User requests OTP | `DEBUG` |
-| **OTP Validation Success** | Correct OTP entered | `INFO` |
-| **OTP Validation Failure** | Wrong OTP / Expired / Max attempts | `ERROR` |
-| **Logout** | User clicks logout button | `INFO` |
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s;
+        }
 
-### Example Log Output
-```
-D/OTP_AUTH: OTP generated for user@example.com: 123456
-I/OTP_AUTH: OTP validation success for user@example.com
-E/OTP_AUTH: OTP validation failure - Incorrect OTP. Attempts left: 2
-I/OTP_AUTH: User logged out - Session duration: 05:23
-```
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(102, 126, 234, 0.5);
+        }
 
-## 🎯 External SDK: Why Timber?
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            color: #666;
+            line-height: 1.8;
+        }
 
-I chose **Timber** over Firebase Analytics and Sentry for this project because:
+        .instructions code {
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
 
-### ✅ Pros
-1. **Lightweight** - Only 50KB, minimal impact on APK size
-2. **Zero Configuration** - Single line initialization
-3. **No External Dependencies** - Works offline, no API keys needed
-4. **Perfect for Development** - Easy to debug and test
-5. **Production-Ready** - Can be extended with custom `Tree` implementations
+        canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-showcase">
+            <div class="logo-card">
+                <div class="logo shield-logo">
+                    <div class="key-icon">
+                        <div class="circle"></div>
+                        <div class="line"></div>
+                        <div class="teeth">
+                            <div class="tooth"></div>
+                            <div class="tooth"></div>
+                            <div class="tooth"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Shield + Key</h3>
+            </div>
 
-### ❌ Why Not Others?
-- **Firebase Analytics** - Overkill for local assignment, requires Google Services
-- **Sentry** - Requires account setup, API keys, network calls
+            <div class="logo-card">
+                <div class="logo fingerprint-logo">
+                    <div class="fingerprint-lines">
+                        <div class="fp-line"></div>
+                        <div class="fp-line"></div>
+                        <div class="fp-line"></div>
+                        <div class="fp-line"></div>
+                    </div>
+                </div>
+                <h3>Fingerprint</h3>
+            </div>
 
-### Timber Implementation
-```kotlin
-// MainActivity.kt
-if (BuildConfig.DEBUG) {
-    Timber.plant(Timber.DebugTree())
-}
+            <div class="logo-card">
+                <div class="logo lock-logo">
+                    <div class="lock-shackle"></div>
+                    <div class="lock-body">
+                        <div class="otp-dots">
+                            <div class="otp-dot"></div>
+                            <div class="otp-dot"></div>
+                            <div class="otp-dot"></div>
+                            <div class="otp-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Lock + OTP</h3>
+            </div>
 
-// Usage
-Timber.tag("OTP_AUTH").d("OTP generated for $email")
-```
+            <div class="logo-card">
+                <div class="logo email-logo">
+                    <div class="envelope">
+                        <div class="envelope-body">
+                            <div class="envelope-flap"></div>
+                        </div>
+                        <div class="security-badge">🔒</div>
+                    </div>
+                </div>
+                <h3>Email Security</h3>
+            </div>
+        </div>
 
-## 🧪 Edge Cases Handled
+        <div class="download-section">
+            <h2>📥 Download Your Logo</h2>
+            <p>Choose your preferred design and download as PNG</p>
+            <button class="download-btn" onclick="downloadLogo('shield', 0)">Shield + Key</button>
+            <button class="download-btn" onclick="downloadLogo('fingerprint', 1)">Fingerprint</button>
+            <button class="download-btn" onclick="downloadLogo('lock', 2)">Lock + OTP</button>
+            <button class="download-btn" onclick="downloadLogo('email', 3)">Email Security</button>
 
-| Edge Case | Handling |
-|-----------|----------|
-| **Expired OTP** | Shows "OTP expired" message, disables verify button |
-| **Incorrect OTP** | Decrements attempts, shows remaining attempts |
-| **Max Attempts Exceeded** | Disables verify button, prompts to resend |
-| **Screen Rotation** | State persists using ViewModel |
-| **Empty Email** | Disabled "Send OTP" button |
-| **Invalid Email Format** | Validation before sending OTP |
-| **Rapid Resend Clicks** | Each resend invalidates previous OTP |
-| **Navigation Back** | Clears OTP state properly |
+            <div class="instructions">
+                <h3>📁 How to Use in Your README:</h3>
+                <ol>
+                    <li>Create folder: <code>docs/images/</code> in your project root</li>
+                    <li>Save downloaded logo as <code>logo.png</code></li>
+                    <li>The README already includes the logo reference</li>
+                    <li>Commit and push to GitHub</li>
+                </ol>
+                <p><strong>📌 Pro Tip:</strong> Use the <strong>Shield + Key</strong> logo for professional appearance or <strong>Lock + OTP</strong> to emphasize the OTP feature.</p>
+            </div>
+        </div>
+    </div>
 
-## 🤖 AI Assistance Disclosure
+    <canvas id="canvas"></canvas>
 
-### 🤖 Used AI/GPT For:
-- ✅ Timber SDK integration syntax
-- ✅ Compose UI best practices (remember vs rememberSaveable)
-- ✅ Material Design 3 theming setup
-- ✅ Navigation Compose boilerplate
-- ✅ Debugging build configuration issues
+    <script>
+        function downloadLogo(name, index) {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = 500;
+            canvas.height = 500;
 
-### 💡 Implemented Independently:
-- ✅ **OTP generation and validation logic**
-- ✅ **Data structure design** (Map-based storage)
-- ✅ **State management** (ViewModel architecture)
-- ✅ **Timer implementation** (LaunchedEffect coroutine)
-- ✅ **Attempt limiting mechanism**
-- ✅ **Navigation flow** between screens
-- ✅ **UI/UX design decisions**
-- ✅ **Edge case handling**
+            // Get the logo element
+            const logos = document.querySelectorAll('.logo');
+            const logo = logos[index];
 
-### 📚 Understanding & Learning:
-- Studied official Android Compose documentation
-- Researched MVVM architecture patterns
-- Experimented with different state management approaches
-- Tested various timer implementation strategies
-- Analyzed best practices for error handling
+            // Create gradient backgrounds
+            const gradients = [
+                ['#667eea', '#764ba2'], // Shield
+                ['#f093fb', '#f5576c'], // Fingerprint
+                ['#4facfe', '#00f2fe'], // Lock
+                ['#fa709a', '#fee140']  // Email
+            ];
 
-## 📝 Assignment Context
+            const gradient = ctx.createLinearGradient(0, 0, 500, 500);
+            gradient.addColorStop(0, gradients[index][0]);
+            gradient.addColorStop(1, gradients[index][1]);
 
-**Timebox:** 6-7 hours  
-**Objective:** Build a passwordless authentication flow with OTP  
-**Backend:** Not required - all logic implemented locally  
+            // Draw circle background
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(250, 250, 250, 0, Math.PI * 2);
+            ctx.fill();
 
-This project demonstrates understanding of:
-- Jetpack Compose fundamentals
-- State management and lifecycle handling
-- Clean architecture principles
-- Kotlin coroutines
-- Data structure selection reasoning
-- External SDK integration
+            // Draw logo elements based on type
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 8;
 
-## 📞 Contact
+            if (name === 'shield') {
+                // Shield outline
+                ctx.globalAlpha = 0.15;
+                ctx.beginPath();
+                ctx.moveTo(250, 150);
+                ctx.lineTo(320, 190);
+                ctx.lineTo(320, 290);
+                ctx.lineTo(250, 350);
+                ctx.lineTo(180, 290);
+                ctx.lineTo(180, 190);
+                ctx.closePath();
+                ctx.fill();
+                ctx.globalAlpha = 1;
 
-For questions or feedback about this project:
-- **GitHub:** [@yourusername](https://github.com/yourusername)
-- **Email:** your.email@example.com
+                // Key
+                ctx.beginPath();
+                ctx.arc(250, 220, 25, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.fillRect(244, 240, 12, 50);
+                ctx.fillRect(244, 280, 12, 15);
+                ctx.fillRect(250, 280, 12, 15);
+                ctx.fillRect(256, 280, 12, 15);
+            } else if (name === 'fingerprint') {
+                // Fingerprint lines
+                ctx.lineWidth = 6;
+                for (let i = 0; i < 4; i++) {
+                    ctx.globalAlpha = 1 - (i * 0.15);
+                    ctx.beginPath();
+                    ctx.ellipse(250, 250, 40 + (i * 25), 50 + (i * 25), 0, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                ctx.globalAlpha = 1;
+            } else if (name === 'lock') {
+                // Lock shackle
+                ctx.lineWidth = 10;
+                ctx.beginPath();
+                ctx.arc(250, 230, 40, Math.PI, 0, false);
+                ctx.stroke();
 
----
+                // Lock body
+                ctx.fillRect(210, 260, 80, 70);
+                ctx.beginPath();
+                ctx.arc(210, 260, 10, Math.PI/2, Math.PI);
+                ctx.arc(210, 330, 10, Math.PI, Math.PI*1.5);
+                ctx.arc(290, 330, 10, Math.PI*1.5, 0);
+                ctx.arc(290, 260, 10, 0, Math.PI/2);
+                ctx.fill();
 
-⭐ **If this project helped you learn, please consider giving it a star!**
+                // OTP dots
+                ctx.fillStyle = gradients[index][0];
+                for (let i = 0; i < 4; i++) {
+                    ctx.beginPath();
+                    ctx.arc(220 + (i * 20), 295, 5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            } else if (name === 'email') {
+                // Envelope body
+                ctx.fillRect(200, 230, 100, 70);
+                
+                // Envelope flap
+                ctx.beginPath();
+                ctx.moveTo(200, 230);
+                ctx.lineTo(250, 270);
+                ctx.lineTo(300, 230);
+                ctx.closePath();
+                ctx.fill();
 
----
+                // Security badge
+                ctx.fillStyle = gradients[index][1];
+                ctx.beginPath();
+                ctx.arc(310, 310, 25, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Lock emoji
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🔒', 310, 310);
+            }
 
-**Built with ❤️ using Jetpack Compose**
-
-Instructions to Use:
-
-Create a file named README.md in your project root (same level as app folder)
-Copy the entire content above
-Replace yourusername with your actual GitHub username
-Replace your.email@example.com with your email
-Add screenshots if you want (optional but recommended)
-Commit and push to GitHub
+            // Download
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `passwordless-auth-${name}-logo.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+</html>
